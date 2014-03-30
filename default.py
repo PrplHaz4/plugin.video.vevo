@@ -326,7 +326,7 @@ def listVideos(url = False,playlist=False,playall=False,queue=False,VEVOToken=Fa
             displayname = artist+' - '+title
             item=xbmcgui.ListItem(displayname, iconImage=video_image, thumbnailImage=video_image)
             infoLabels={ "Title":title,
-                         "Artist":artist,
+                         "Artist": [ artist ],
                          #Set album to artist because xbmc bug doesn't display artist value for video type
                          "Album":artist,
                          "Duration":str(duration/60)+':'+str(duration-(duration/60)*60),
