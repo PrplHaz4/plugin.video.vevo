@@ -24,6 +24,10 @@ except:
 pluginhandle = int(sys.argv[1])
 #xbmcplugin.setContent(pluginhandle, 'musicvideos')
 
+__plugin__ = 'VEVO'
+__authors__ = 'BlueCop'
+__credits__ = 'moneymaker'
+
 addon = xbmcaddon.Addon('plugin.video.vevo')
 pluginpath = addon.getAddonInfo('path')
 datapath = xbmc.translatePath('special://profile/addon_data/plugin.video.vevo/')
