@@ -1,4 +1,6 @@
-0.7.6 - v13.x support, updated fanart and logo
+0.7.7 - make the artist variable passed to infoLabels a list
+
+0.7.6 - updated fanart and logo
 
 0.7.5 - Fixed german language, clean-up
 
