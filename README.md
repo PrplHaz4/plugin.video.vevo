@@ -30,6 +30,11 @@ Please include log output if possible, using [Github Gist] [gist] or
 The location of your XBMC log file will depend on your platform, 
 see the [XBMC Wiki page] [xbmc-wiki-log-file] for information.
 
+Credits
+-------
+ - BlueCop
+	Initial addon development.
+
 Contact Me
 ----------
 For anything else, you can contact me at [forum.xbmc.org] [moneymaker].
