@@ -944,10 +944,15 @@ def playlistVideo():
     if addon.getSetting('defaultyoutube') == 'true':
         try:YouTube()
         except:
+          try:HLS()
+          except:
             try:RTMP()
             except:HTTPDynamic()
     elif addon.getSetting('defaultrtmp') == 'true':
         try:RTMP()
+        except:YouTube()
+    elif addon.getSetting('defaulthls') == 'true':
+        try:HLS()
         except:YouTube()
     elif addon.getSetting('enabled-cache') == 'true':
         HTTPDynamicCache()
@@ -1151,6 +1156,8 @@ def HTTPDynamicCacheDownload(vevoID):
     title = video['title'].encode('utf-8')
     image_url = video['imageUrl']
     artist = video['mainArtists'][0]['artistName'].encode('utf-8')
+
+
     filename=cleanfilename(artist+' - '+title)
     videofile = os.path.join(cachepath,filename+'.flv')
     jpgfile = os.path.join(cachepath,filename+'.jpg')
@@ -1170,13 +1177,14 @@ def HTTPDynamicCacheDownload(vevoID):
     else:
         type5=False
         youtube=False
-        for version in video['videoVersions']:
-            if version['sourceType'] == 5:
+        for version in video['videoVersions']: 
+            if  version['sourceType'] == 5:
                 type5=True
             elif version['sourceType'] == 0:
                 youtubeID = version['id']
                 youtube=True
-        
+                
+
         video_url=False
         if type5:
             print "VEVO - Saving from VEVO"
@@ -1294,6 +1302,17 @@ def YouTube():
     youtubeurl = 'plugin://plugin.video.youtube/?action=play_video&videoid=%s' % youtubeID
     item = xbmcgui.ListItem(path=youtubeurl)
     xbmcplugin.setResolvedUrl(pluginhandle, True, item)
+
+def HLS():
+    vevoID = params['url'].split('/')[-1]
+    url = 'http://videoplayer.vevo.com/VideoService/AuthenticateVideo?isrc=%s' % vevoID
+    data = getURL(url)
+    video = demjson.decode(data)['video']
+    for version in video['videoVersions']:
+            if version['sourceType']== 4:
+               video_url = re.compile('url="(.+?)"').search(version['data']).group(1)
+               item = xbmcgui.ListItem(path=video_url) 
+               xbmcplugin.setResolvedUrl(pluginhandle, True, item)
 
 def RTMP():
     item = xbmcgui.ListItem(path=getVideoRTMP(params['url']))
