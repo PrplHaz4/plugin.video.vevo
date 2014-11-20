@@ -98,6 +98,7 @@ def listFeatured(url=False):
             image_url = item['image_url']
             primary_text = item['primary_text'].encode('utf-8')
             secondary_text = item['secondary_text'].encode('utf-8')
+
             action_url = item['action_url']
             is_live_stream = item['is_live_stream']
             image_wide_url  = item['image_wide_url']
@@ -141,11 +142,11 @@ def listFeatured(url=False):
             u += '&mode='+urllib.quote_plus(mode)
             u += '&duration='+urllib.quote_plus('210')
             item=xbmcgui.ListItem(displayname, iconImage=image_url, thumbnailImage=image_url)
-            item.setInfo( type="Video", infoLabels={ "Title":secondary_text,
-                                                     "Artist":primary_text,
-                                                     "Album":primary_text,
-                                                     "Studio":text,
-                                                     "overlay":overlay,
+            item.setInfo( type="Video", infoLabels={ "Title" : secondary_text,
+                                                     "Artist" : [primary_text],
+                                                     "Album" : primary_text,
+                                                     "Studio" : text,
+                                                     "overlay" : overlay
                                                      })
             item.setProperty('fanart_image',image_wide_url)
             item.addContextMenuItems( cm )
