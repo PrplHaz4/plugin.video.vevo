@@ -34,6 +34,7 @@
 	
 	<string id="30028">Rick Roll!</string>
 	<string id="30029">RTMP Mode</string>
+     <string id="30031">HLS Mode</string>
 	
 	<string id="30030">Proxy</string>
 	<string id="30040">Proxy IP</string>
