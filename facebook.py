@@ -40,7 +40,7 @@ from urllib2 import HTTPError
 from cgi import parse_qs
 
 import os, xbmc, xbmcaddon
-__addon__ = xbmcaddon.Addon(id='script.facebook.media')
+Addon = xbmcaddon.Addon(id='script.facebook.media')
 
 poster.streaminghttp.register_openers()
 
