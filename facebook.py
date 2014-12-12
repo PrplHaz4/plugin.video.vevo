@@ -1,3 +1,4 @@
+# coding: utf-8
 #!/usr/bin/env python
 #
 # Copyright 2010 Facebook
@@ -601,7 +602,7 @@ class GraphWrap(GraphAPI):
     def browserRead(self,readable,post=''):
         html = readable.read()
         if False:
-            htmlFile = os.path.join(xbmc.translatePath(__addon__.getAddonInfo('profile')),'cache','DEBU?G_HTML%s.html' % post)
+            htmlFile = os.path.join(xbmc.translatePath(__addon__.getAddonInfo('profile')),'cache','DEBU​G_HTML%s.html' % post)
             with open(htmlFile,'w') as f:
                 f.write(html.strip("'"))
         return html
@@ -619,7 +620,7 @@ class GraphWrap(GraphAPI):
         import mechanize #@UnresolvedImport
         br = mechanize.Browser()
         __addon__ = xbmcaddon.Addon(id='script.facebook.media')
-        cookiesPath = os.path.join(xbmc.translatePath(__addon__.getAddonInfo('profile')),'cache','cook?ies')
+        cookiesPath = os.path.join(xbmc.translatePath(__addon__.getAddonInfo('profile')),'cache','cook​ies')
         LOG('Cookies will be saved to: ' + cookiesPath)
         cookies = mechanize.LWPCookieJar(cookiesPath)
         if os.path.exists(cookiesPath): cookies.load()
@@ -686,7 +687,7 @@ class GraphWrap(GraphAPI):
                 #no token in the url, let's try to parse it from javascript on the page
                 try:
                     __addon__ = xbmcaddon.Addon(id='script.facebook.media')
-                    htmlFile = os.path.join(xbmc.translatePath(__addon__.getAddonInfo('profile')),'cache','DEBU?G_HTML.html')
+                    htmlFile = os.path.join(xbmc.translatePath(__addon__.getAddonInfo('profile')),'cache','DEBU​G_HTML.html')
                     open(htmlFile,'w').write(html)
                     LOG('html output written to: ' + htmlFile)
                 except:
